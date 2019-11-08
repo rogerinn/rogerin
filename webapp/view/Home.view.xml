@@ -1,0 +1,54 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:layout="sap.ui.layout" xmlns="sap.m" xmlns:core="sap.ui.core"
+	controllerName="rogerin.Rogerin.controller.Home" xmlns:microchart="sap.suite.ui.microchart" displayBlock="true">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<FlexBox alignItems="Start" justifyContent="Center">
+							<items>
+								<Image src="images/rogerin.png"/>
+							</items>
+						</FlexBox>
+						<sap.ui.layout.form:SimpleForm editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form">
+							<sap.ui.layout.form:content>
+								<core:Title text="Faça sua escolha"/>
+								<Label text="Votante"/>
+								<Select items="{path: 'data>/People'}">
+									<items>
+										<core:Item text="{data>Name}"/>
+									</items>
+								</Select>
+								<Label text="Seu voto" width="100%"/>
+								<RadioButtonGroup columns="2" id="rgOptions">
+									<buttons>
+										<RadioButton text="Sim" id="yes"/>
+										<RadioButton text="Não" id="no"/>
+									</buttons>
+								</RadioButtonGroup>
+								<Button text="Confirmar voto!" type="Emphasized" press="vote" />
+							</sap.ui.layout.form:content>
+						</sap.ui.layout.form:SimpleForm>
+						<FlexBox alignItems="Start" justifyContent="Center">
+							<items>
+								<VBox>
+									<Title text="Relação dos Votos" titleStyle="H2"/>
+									<FlexBox width="15rem" height="10rem">
+										<items>
+											<microchart:InteractiveDonutChart selectionChanged="onSelectionChanged">
+												<microchart:segments>
+													<microchart:InteractiveDonutChartSegment label="Sim" value="{data>/Yes}" displayedValue="{data>/Yes}"/>
+													<microchart:InteractiveDonutChartSegment label="Não" value="{data>/No}" displayedValue="{data>/No}"/>
+												</microchart:segments>
+											</microchart:InteractiveDonutChart>
+										</items>
+									</FlexBox>
+								</VBox>
+							</items>
+						</FlexBox>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

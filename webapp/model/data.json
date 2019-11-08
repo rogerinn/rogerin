@@ -1,0 +1,9 @@
+{
+	"People": [
+		{"Name": "Eduardo"},
+		{"Name": "Marcos"},
+		{"Name": "Adolpho"}
+	],
+	"Yes": 2,
+	"No": 5
+}
